@@ -19,17 +19,17 @@ def page(title, description, active, body):
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#071629"><title>{escape(title)} | DIGICOM</title>
 <meta name="description" content="{escape(description)}">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23071629'/%3E%3Cpath d='M17 17h15c11 0 18 7 18 15s-7 15-18 15H17V17zm11 9v12h4c5 0 8-2 8-6s-3-6-8-6h-4z' fill='%233de0ef'/%3E%3C/svg%3E">
+<link rel="icon" type="image/png" href="/assets/digicom-logo.png">
 <link rel="stylesheet" href="/assets/site.css"><script defer src="/assets/site.js"></script>
 </head><body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header"><div class="container header-inner">
-<a class="brand" href="/" aria-label="DIGICOM home"><span class="brand-mark">D</span><span>DIGICOM<small>Technology for Digital Growth</small></span></a>
+<a class="brand" href="/" aria-label="DIGICOM home"><img src="/assets/digicom-logo.png" width="199" height="45" alt="DIGICOM"><small>Technology for Digital Growth</small></a>
 <button class="menu-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="Open menu"><span></span><span></span><span></span></button>
 <nav id="primary-nav" class="nav" aria-label="Main navigation">{nav}<a class="nav-contact" href="/contact/">Let's connect <span aria-hidden="true">↗</span></a></nav>
 </div></header>
 <main id="main">{body}</main>
-<footer class="site-footer"><div class="container"><div class="footer-top"><div><a class="brand footer-brand" href="/"><span class="brand-mark">D</span><span>DIGICOM<small>Technology for Digital Growth</small></span></a><p>Connecting technology, content and telecom to create digital services that grow.</p></div><div class="footer-links"><span>Explore</span><a href="/about/">About</a><a href="/solutions/">Solutions</a><a href="/projects/">Projects</a><a href="/partners/">Partners</a><a href="/contact/">Contact</a></div></div><div class="footer-bottom"><span>© 2026 DIGICOM</span><span>Digital Communication Development and Investment Joint Stock Company</span></div></div></footer>
+<footer class="site-footer"><div class="container"><div class="footer-top"><div><a class="brand footer-brand" href="/" aria-label="DIGICOM home"><img src="/assets/digicom-logo.png" width="199" height="45" alt="DIGICOM"><small>Technology for Digital Growth</small></a><p>Connecting technology, content and telecom to create digital services that grow.</p></div><div class="footer-links"><span>Explore</span><a href="/about/">About</a><a href="/solutions/">Solutions</a><a href="/projects/">Projects</a><a href="/partners/">Partners</a><a href="/contact/">Contact</a></div></div><div class="footer-bottom"><span>© 2026 DIGICOM</span><span>Digital Communication Development and Investment Joint Stock Company</span></div></div></footer>
 </body></html>'''
 
 def eyebrow(text): return f'<p class="eyebrow"><span class="eyebrow-line"></span>{text}</p>'

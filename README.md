@@ -10,7 +10,7 @@ Corporate website for DIGICOM — **Technology for Digital Growth**.
 - Navigation: Home, About, Solutions, Projects, Partners, Contact
 - Editorial rule: describe only evidenced work. Do not publish commercial terms, revenue share, contract counts, or unverified contact details.
 
-The site uses a midnight navy, electric blue, and cyan palette. Its visual motif is the real service chain connecting technology/content partners, DIGICOM, operators, and end users. Project entries describe service scope without claiming outcomes that have not been supplied.
+The site uses the supplied DIGICOM logo and a charcoal, white, and orange palette. Its visual motif is the real service chain connecting technology/content partners, DIGICOM, operators, and end users. Project entries describe service scope without claiming outcomes that have not been supplied.
 
 ## Source
 
