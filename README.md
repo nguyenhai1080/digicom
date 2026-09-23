@@ -18,4 +18,4 @@ The site uses a midnight navy, electric blue, and cyan palette. Its visual motif
 
 ## Before public launch
 
-Confirm the current public contact information, domain, partner naming permissions, and any updated company facts. Current deployment is intended as a private review version.
+Confirm domain cutover plans, partner naming permissions, and any updated company facts. Current deployment is intended as a private review version. Contact information was supplied directly by the project owner.
