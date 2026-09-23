@@ -38,7 +38,7 @@ def eyebrow(text): return f'<p class="eyebrow"><span class="eyebrow-line"></span
 home = f'''
 <section class="hero"><div class="container hero-grid"><div class="hero-copy">
 {eyebrow('Digital Services Partner for Telecom Operators')}
-<h1>DIGICOM<br><em>Technology for Digital Growth.</em></h1>
+<h1>DIGICOM<br><em>Technology for Digital Growth</em></h1>
 <p class="hero-lead">Empowering telecom operators with digital services, technology and content.</p>
 <div class="hero-actions">{link('Explore our solutions', '/solutions/', 'button button-primary')}{link('See our work', '/projects/', 'button button-ghost')}</div>
 <div class="hero-proof"><div><strong>Since 2011</strong><span>Telecom experience</span></div><div><strong>7 markets</strong><span>Across Asia, Africa and the Caribbean</span></div></div>
