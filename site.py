@@ -1,0 +1,85 @@
+from pathlib import Path
+from html import escape
+
+ROOT = Path(__file__).parent
+DIST = ROOT / "dist"
+
+NAV = [
+    ("Home", "/"), ("About", "/about/"), ("Solutions", "/solutions/"),
+    ("Projects", "/projects/"), ("Partners", "/partners/"), ("Contact", "/contact/")
+]
+
+def link(label, href, cls="text-link"):
+    return f'<a class="{cls}" href="{href}">{label}<span aria-hidden="true">↗</span></a>'
+
+def page(title, description, active, body):
+    nav = "".join(f'<a href="{href}" {"aria-current=page" if name == active else ""}>{name}</a>' for name, href in NAV)
+    return f'''<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#071629"><title>{escape(title)} | DIGICOM</title>
+<meta name="description" content="{escape(description)}">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23071629'/%3E%3Cpath d='M17 17h15c11 0 18 7 18 15s-7 15-18 15H17V17zm11 9v12h4c5 0 8-2 8-6s-3-6-8-6h-4z' fill='%233de0ef'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="/assets/site.css"><script defer src="/assets/site.js"></script>
+</head><body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><div class="container header-inner">
+<a class="brand" href="/" aria-label="DIGICOM home"><span class="brand-mark">D</span><span>DIGICOM<small>Technology for Digital Growth</small></span></a>
+<button class="menu-toggle" type="button" aria-controls="primary-nav" aria-expanded="false" aria-label="Open menu"><span></span><span></span><span></span></button>
+<nav id="primary-nav" class="nav" aria-label="Main navigation">{nav}<a class="nav-contact" href="/contact/">Let's connect <span aria-hidden="true">↗</span></a></nav>
+</div></header>
+<main id="main">{body}</main>
+<footer class="site-footer"><div class="container"><div class="footer-top"><div><a class="brand footer-brand" href="/"><span class="brand-mark">D</span><span>DIGICOM<small>Technology for Digital Growth</small></span></a><p>Connecting technology, content and telecom to create digital services that grow.</p></div><div class="footer-links"><span>Explore</span><a href="/about/">About</a><a href="/solutions/">Solutions</a><a href="/projects/">Projects</a><a href="/partners/">Partners</a><a href="/contact/">Contact</a></div></div><div class="footer-bottom"><span>© 2026 DIGICOM</span><span>Digital Communication Development and Investment Joint Stock Company</span></div></div></footer>
+</body></html>'''
+
+def eyebrow(text): return f'<p class="eyebrow"><span class="eyebrow-line"></span>{text}</p>'
+
+home = f'''
+<section class="hero"><div class="container hero-grid"><div class="hero-copy">
+{eyebrow('Digital services • Telecom integration')}
+<h1>Technology for<br><em>Digital Growth.</em></h1>
+<p class="hero-lead">We connect technology, content and telecom operators to bring useful digital services to more people and markets.</p>
+<div class="hero-actions">{link('Explore our solutions', '/solutions/', 'button button-primary')}{link('See our work', '/projects/', 'button button-ghost')}</div>
+<div class="hero-proof"><div><strong>Since 2011</strong><span>Built on digital services</span></div><div><strong>Across markets</strong><span>From Vietnam to international operations</span></div></div>
+</div><div class="hero-visual" aria-label="DIGICOM connects partners, services, operators and users"><div class="visual-label">THE DIGICOM MODEL</div><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="visual-core"><span>Technology<br>& Content</span><b>DIGICOM</b><span>Telecom<br>Operators</span></div><div class="visual-caption">One connected service ecosystem <span>→</span> End users</div></div></div></section>
+<section class="intro section"><div class="container section-head"><div>{eyebrow('What we do')}<h2>Two capabilities.<br><span>One connected approach.</span></h2></div><p>Our work spans the service itself and the integration needed to make it operate in telecom environments.</p></div><div class="container capability-grid"><article class="capability"><span class="card-num">01 / CORE CAPABILITY</span><div class="cap-icon">◎</div><h3>Digital Services</h3><p>Telecom VAS, digital content, entertainment and interactive experiences designed for operator audiences.</p><ul><li>Telecom services</li><li>Digital entertainment</li><li>Interactive & lifestyle</li></ul>{link('Explore services', '/solutions/')}</article><article class="capability"><span class="card-num">02 / CORE CAPABILITY</span><div class="cap-icon">⌘</div><h3>Technology & Service Integration</h3><p>Bringing platforms, content and partners together with operators—from integration through service operation.</p><ul><li>Partner & platform integration</li><li>Content aggregation</li><li>Operator integration & operation</li></ul>{link('How we work', '/solutions/#integration')}</article></div></section>
+<section class="section proof-section"><div class="container proof-grid"><div>{eyebrow('Built through delivery')}<h2>Experience that travels<br><span>across markets.</span></h2><p>Founded in 2011, DIGICOM developed digital and telecom services in Vietnam before extending its work to operator markets in Africa, Asia and the Caribbean.</p>{link('Our story', '/about/')}</div><div class="market-list"><div><span>01</span><strong>Vietnam</strong><small>Origins in digital content and telecom VAS</small></div><div><span>02</span><strong>Africa</strong><small>Burundi · Cameroon · Tanzania · Mozambique</small></div><div><span>03</span><strong>Asia & Caribbean</strong><small>Timor-Leste · Haiti</small></div></div></div></section>
+<section class="section work-section"><div class="container"><div class="section-head"><div>{eyebrow('Selected service work')}<h2>Real services.<br><span>Real operator environments.</span></h2></div><p>Our current portfolio includes music, video, call enhancement and interactive services.</p></div><div class="work-grid"><article><span>TELECOM SERVICES</span><h3>Call & voice services</h3><p>CRBT, missed call alert, voicemail and call enhancement services in operator portfolios.</p></article><article><span>DIGITAL ENTERTAINMENT</span><h3>Content at scale</h3><p>Music, video and TV content supplied for digital entertainment services.</p></article><article><span>INTERACTIVE SERVICES</span><h3>Services people use</h3><p>Interactive experiences including MeetMe and Meu Par.</p></article></div>{link('View selected projects', '/projects/', 'button button-outline')}</div></section>
+<section class="cta-band"><div class="container"><div>{eyebrow('Work with DIGICOM')}<h2>Build the next digital service<br>together.</h2></div>{link('Contact us', '/contact/', 'button button-light')}</div></section>'''
+
+about = f'''<section class="page-hero"><div class="container">{eyebrow('About DIGICOM')}<h1>Built on digital services.<br><em>Focused on what comes next.</em></h1><p>DIGICOM connects technology, content and telecom to develop and operate services for users across markets.</p></div></section>
+<section class="section"><div class="container two-col"><div>{eyebrow('Our company')}<h2>A specialist in the space between partners and operators.</h2></div><div class="prose"><p>Founded in 2011, DIGICOM began with digital content, software and mobile applications. The company expanded into telecom value-added services in Vietnam, then into international operator markets.</p><p>Today our focus remains clear: Digital Services and Technology & Service Integration. We work across content, platforms, integration and operation to help services reach operator customers.</p><p class="legal-name">Digital Communication Development and Investment Joint Stock Company</p></div></div></section>
+<section class="section history"><div class="container">{eyebrow('Our journey')}<h2>2011 to today</h2><div class="timeline"><div><strong>2011</strong><p>DIGICOM is established, working in digital content, software and mobile applications.</p></div><div><strong>2012–2014</strong><p>Telecom VAS and content services develop through direct connections with operators in Vietnam.</p></div><div><strong>From 2015</strong><p>Work expands to international markets including Burundi, Cameroon, Timor-Leste, Tanzania and Haiti.</p></div><div><strong>Today</strong><p>Digital service portfolios and partner integration remain central, including work associated with Movitel and VNATEL.</p></div></div></div></section>
+<section class="section"><div class="container two-col"><div>{eyebrow('Our role')}<h2>Connecting the pieces that make a service work.</h2></div><div class="prose"><p>We bring technology and content partners into a practical delivery model for telecom operators. This can involve service platforms, content aggregation, integration, commercial coordination and ongoing service operation.</p>{link('Explore our capabilities', '/solutions/', 'button button-outline')}</div></div></section>'''
+
+solutions = f'''<section class="page-hero"><div class="container">{eyebrow('Solutions')}<h1>Digital services, <em>connected end to end.</em></h1><p>Two capabilities describe the work we do and the role we play across a service lifecycle.</p></div></section>
+<section class="section" id="digital-services"><div class="container">{eyebrow('01 / Digital Services')}<div class="section-head"><h2>Services people can<br><span>hear, watch and use.</span></h2><p>Digital experiences built for telecom audiences, supported by content and operating expertise.</p></div><div class="service-grid"><article><div class="service-icon">01</div><h3>Telecom Services</h3><p>Call and voice experiences that extend the core telecom service.</p><small>CRBT · MCA · Voicemail · CallPlus · iSign</small></article><article><div class="service-icon">02</div><h3>Digital Entertainment</h3><p>Music, video and TV content for operator entertainment portfolios.</p><small>Music · Video · VoD · MOVTV · MyClip</small></article><article><div class="service-icon">03</div><h3>Interactive & Lifestyle</h3><p>Services designed for participation, connection and everyday use.</p><small>MeetMe · Meu Par</small></article></div></div></section>
+<section class="section integration-section" id="integration"><div class="container">{eyebrow('02 / Technology & Service Integration')}<div class="section-head"><h2>From partner capability<br><span>to operating service.</span></h2><p>We connect different contributors so an idea can work inside an operator environment.</p></div><div class="flow" aria-label="Technology and content partners connect through DIGICOM to telecom operators and end users"><div><span>01</span><strong>Technology &<br>Content Partners</strong></div><i>→</i><div class="flow-main"><span>02</span><strong>DIGICOM</strong><small>Integrate · aggregate · operate</small></div><i>→</i><div><span>03</span><strong>Telecom<br>Operators</strong></div><i>→</i><div><span>04</span><strong>End Users</strong></div></div><div class="integration-list"><span>Service platforms</span><span>Partner integration</span><span>Content aggregation</span><span>Operator integration</span><span>Service operation</span></div></div></section>
+<section class="cta-band"><div class="container"><div>{eyebrow('Explore delivery')}<h2>See the services behind<br>our capabilities.</h2></div>{link('Selected projects', '/projects/', 'button button-light')}</div></section>'''
+
+projects = f'''<section class="page-hero"><div class="container">{eyebrow('Projects')}<h1>Selected work across<br><em>digital service portfolios.</em></h1><p>A view of service areas and collaborations supported by DIGICOM. Commercial terms and performance figures are private.</p></div></section>
+<section class="section"><div class="container project-list"><article><div><span class="card-num">01 / MOZAMBIQUE</span><h2>Movitel digital services</h2><p>A portfolio spanning music and CRBT, MOVTV content, MyClip video, call and voice services, and interactive experiences such as MeetMe and Meu Par.</p><div class="tags"><span>Telecom VAS</span><span>Entertainment</span><span>Interactive</span></div></div><strong>Movitel</strong></article><article><div><span class="card-num">02 / VIETNAM</span><h2>CallPlus collaboration</h2><p>Collaboration with VNATEL around CallPlus, within DIGICOM's telecom service portfolio.</p><div class="tags"><span>Call enhancement</span><span>Telecom services</span></div></div><strong>VNATEL</strong></article><article><div><span class="card-num">03 / INTERNATIONAL EXPERIENCE</span><h2>Operator market expansion</h2><p>Historical work in digital music, CRBT, VoD and VAS platforms across operator markets including Burundi, Cameroon, Timor-Leste, Tanzania and Haiti.</p><div class="tags"><span>Digital content</span><span>VAS platforms</span><span>Operator integration</span></div></div><strong>Since 2015</strong></article></div></section>
+<section class="cta-band"><div class="container"><div>{eyebrow('Capabilities')}<h2>Built for service delivery<br>across the value chain.</h2></div>{link('Explore solutions', '/solutions/', 'button button-light')}</div></section>'''
+
+partners = f'''<section class="page-hero"><div class="container">{eyebrow('Partners')}<h1>Progress happens<br><em>through connection.</em></h1><p>Our model brings specialist technology and content partners together with telecom operators.</p></div></section>
+<section class="section"><div class="container two-col"><div>{eyebrow('How we collaborate')}<h2>Many capabilities.<br>One delivery chain.</h2></div><div class="prose"><p>DIGICOM works between service creators and operator environments. We help align technology, content, integration and ongoing operation around a service that can reach end users.</p><p>Our recorded collaborations include operator-facing work with Movitel and VNATEL and technology or service partnerships with MARVEL and GST.</p></div></div></section>
+<section class="section partner-section"><div class="container"><div class="partner-grid"><article><span>OPERATOR COLLABORATIONS</span><h3>Movitel</h3><p>Digital service portfolio in Mozambique.</p></article><article><span>OPERATOR COLLABORATIONS</span><h3>VNATEL</h3><p>CallPlus collaboration in Vietnam.</p></article><article><span>TECHNOLOGY PARTNERS</span><h3>MARVEL</h3><p>Technology associated with MCA, voicemail and iSign services.</p></article><article><span>SERVICE PARTNERS</span><h3>GST</h3><p>Service partnership associated with Meu Par.</p></article></div><p class="partner-note">Names reflect collaborations identified in DIGICOM's supplied project materials. Logos and endorsements are not implied.</p></div></section>
+<section class="cta-band"><div class="container"><div>{eyebrow('Partner with us')}<h2>Bring a service idea<br>into an operator market.</h2></div>{link('Contact DIGICOM', '/contact/', 'button button-light')}</div></section>'''
+
+contact = f'''<section class="page-hero contact-hero"><div class="container">{eyebrow('Contact')}<h1>Let's build what<br><em>comes next.</em></h1><p>Talk with DIGICOM about digital services, technology partnerships or operator integration.</p></div></section>
+<section class="section"><div class="container contact-grid"><div><h2>Start a conversation.</h2><p>Tell us about the service, market or partnership you have in mind. Our team can connect the right people and capabilities.</p><p class="contact-pending">Public contact details are being confirmed for this site. If you already work with DIGICOM, please reach out through your existing company contact.</p></div><div class="contact-card"><span class="card-num">DIGICOM</span><h3>Technology for Digital Growth</h3><p>Digital services and technology integration for telecom environments.</p><hr><small>Digital Communication Development and Investment Joint Stock Company</small></div></div></section>'''
+
+PAGES = [
+    ("index.html", "Home", "Digital services and technology integration for telecom operators.", "Home", home),
+    ("about/index.html", "About", "The DIGICOM story, from 2011 to today.", "About", about),
+    ("solutions/index.html", "Solutions", "DIGICOM Digital Services and Technology & Service Integration.", "Solutions", solutions),
+    ("projects/index.html", "Projects", "Selected DIGICOM digital service projects and market experience.", "Projects", projects),
+    ("partners/index.html", "Partners", "DIGICOM operator and technology collaborations.", "Partners", partners),
+    ("contact/index.html", "Contact", "Connect with DIGICOM about digital services and partnerships.", "Contact", contact),
+]
+
+for path, title, desc, active, body in PAGES:
+    out = DIST / path
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(page(title, desc, active, body), encoding="utf-8")
+print(f"Generated {len(PAGES)} pages")
