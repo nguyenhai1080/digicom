@@ -14,7 +14,7 @@ The site uses the supplied DIGICOM logo and a charcoal, white, and orange palett
 
 ## Source
 
-`site.py` generates the six static routes in `dist/`. Edit copy there and styles in `dist/assets/site.css`, then run `python site.py` before publishing. No dependencies are required.
+`site.py` generates the six static routes in `dist/` and mirrors them at the repository root for static GitHub deployments. Edit copy there and styles in `dist/assets/site.css`, then run `python site.py` before publishing. No application dependencies or database are required. The Dockerfile serves `dist/` with nginx on hosts that use Docker builds.
 
 ## Before public launch
 

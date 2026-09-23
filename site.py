@@ -1,5 +1,6 @@
 from pathlib import Path
 from html import escape
+from shutil import copytree
 
 ROOT = Path(__file__).parent
 DIST = ROOT / "dist"
@@ -81,5 +82,10 @@ PAGES = [
 for path, title, desc, active, body in PAGES:
     out = DIST / path
     out.parent.mkdir(parents=True, exist_ok=True)
-    out.write_text(page(title, desc, active, body), encoding="utf-8")
+    html = page(title, desc, active, body)
+    out.write_text(html, encoding="utf-8")
+    root_out = ROOT / path
+    root_out.parent.mkdir(parents=True, exist_ok=True)
+    root_out.write_text(html, encoding="utf-8")
+copytree(DIST / "assets", ROOT / "assets", dirs_exist_ok=True)
 print(f"Generated {len(PAGES)} pages")
