@@ -1,9 +1,11 @@
 from pathlib import Path
 from html import escape
 from shutil import copytree
+from hashlib import sha256
 
 ROOT = Path(__file__).parent
 DIST = ROOT / "dist"
+CSS_VERSION = sha256((DIST / "assets" / "site.css").read_bytes()).hexdigest()[:10]
 
 NAV = [
     ("Home", "/"), ("About", "/about/"), ("Solutions", "/solutions/"),
@@ -21,7 +23,7 @@ def page(title, description, active, body):
 <meta name="theme-color" content="#25282c"><title>{escape(title)} | DIGICOM</title>
 <meta name="description" content="{escape(description)}">
 <link rel="icon" type="image/png" href="/assets/digicom-logo.png">
-<link rel="stylesheet" href="/assets/site.css"><script defer src="/assets/site.js"></script>
+<link rel="stylesheet" href="/assets/site.css?v={CSS_VERSION}"><script defer src="/assets/site.js"></script>
 </head><body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header"><div class="container header-inner">
